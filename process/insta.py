@@ -11,27 +11,21 @@ import json
 import schedule
 import shutil
 
-clientID = 1014072242527987
-clientSECRET = "e767b3acdcd195641f0d9d90b5fa278a"
+#Each postPicture is identical, the only difference is that each one targets a different photo on the webserver
+#Updates will be made to shorten code and make it more effcient, but this works for now
 
-
-
-def get_TOKEN():
-    url = "https://graph.facebook.com/v13.0/oauth/access_token?grant_type=fb_exchange_token&client_id=1014072242527987&client_secret=e767b3acdcd195641f0d9d90b5fa278a&fb_exchange_token=EAAOaSxfK3vMBAAEHkXVk5qvDh2ecSCjhb3OIoeLbFPs0EUhJNKtOEMNgGuXqtOWnSf43jqs3OaVczIsqgHAws6jZB11AEtZCIkD5bZAdvydERDn6oPjsyxgFDZAjKCuRdqLlGypJCgqVWbc1ZAHtAyXY2yrdPTmfiSNuzAM5cRFZCXgChXGPHjJYPLZB8Er6KZC5jGGEdOxs232gOU9GOPSLgXODnZBfp9Vywx1anEZCzUjjs5IKoKqlOJ"
-    r = requests.post(url)
-    print(r.text)
 def postPicture1():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image1.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -43,7 +37,7 @@ def postPicture1():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -56,15 +50,15 @@ def postPicture1():
 def postPicture2():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image2.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -76,7 +70,7 @@ def postPicture2():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -89,15 +83,15 @@ def postPicture2():
 def postPicture3():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image3.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -109,7 +103,7 @@ def postPicture3():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -122,15 +116,15 @@ def postPicture3():
 def postPicture4():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image4.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -142,7 +136,7 @@ def postPicture4():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -151,19 +145,19 @@ def postPicture4():
         print('Posted!')
         print(r.text)
     else:
-        print("There was a problem")   
+        print("There was a problem") 
 def postPicture5():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image5.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -175,7 +169,7 @@ def postPicture5():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -188,15 +182,15 @@ def postPicture5():
 def postPicture6():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image6.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -208,7 +202,7 @@ def postPicture6():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -221,15 +215,15 @@ def postPicture6():
 def postPicture7():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image7.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -241,7 +235,7 @@ def postPicture7():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -254,15 +248,15 @@ def postPicture7():
 def postPicture8():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image8.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -274,7 +268,7 @@ def postPicture8():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -287,15 +281,15 @@ def postPicture8():
 def postPicture9():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image9.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -307,7 +301,7 @@ def postPicture9():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -320,15 +314,15 @@ def postPicture9():
 def postPicture10():
     d = TextGen()
     f = HashFetcher()
-    img_dir = "http://34.73.246.95:8000/media/cat_image10.jpg"
+    img_dir = "URL TO IMAGE"
     quote = d.get_textdata()
     hashtags = f.fetch()
 
     caption =  "{}~~~~~~~~~~~~~~~{}".format(quote, hashtags)
 
     time.sleep(5)
-    token = "EAAOaSxfK3vMBAFjLvt5FsriZAoHXJLX4do5eRqJW0mdmzGcmlnFvqD8bffGR7M3Ov7jUTXVFc3YzPrSP4xccr6CdNZBTTrIQfwkpDW7L5zZClYknF8f1kLdN2kwqLUzRS2XMvgXdWx2ZBZAqZCxqm5axXT6iHQLS2aZC0zv0XGTeQZDZD"
-    post_url = "https://graph.facebook.com/v13.0/{}/media".format("17841450326370751")
+    token = "YOUR LONG-LIVED USER ACCESS TOKEN"
+    post_url = "https://graph.facebook.com/v13.0/{}/media".format("YOUR INSTAGRAM USER ID")
     load_data = {
         "image_url": img_dir,
         "caption": caption,
@@ -340,7 +334,7 @@ def postPicture10():
     if "id" in result:
         creation_id = result['id']
 
-        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("17841450326370751")
+        second_post = "https://graph.facebook.com/v13.0/{}/media_publish".format("YOUR INSTAGRAM USER ID")
         second_data = {
             "creation_id": creation_id,
             "access_token": token
@@ -354,19 +348,23 @@ def postPicture10():
         resetMediaPOST(done_with_post=True)
 
 
-
+# This function is triggers after postPicture10() is executed
+#The webserver is sole designed to handle GET/POST/DELETE Methods
+#Code for websever will be uploaded soon for "security" purposes :)
 def resetMediaPOST(done_with_post):
     if done_with_post is True:
-        mediaserver_url = "http://34.73.246.95:8000/media"
+        mediaserver_url = "URL TO WEBSERVER WITH IMAGES"
+        #Will delete everything from webservers media folder
         r = requests.delete(mediaserver_url)
         print(r.text)
 
         print("Waiting 2 minutes until post")
 
-        time.sleep(20)
-        folder = "C:\\Users\\fguin\\OneDrive\\Desktop\\instabot\\process\\utils\\content"
+        time.sleep(120)
+        #After webserver is done deleting all photos, I also deletes the local photos 
+        folder = "instabot\\process\\utils\\content"
         folderdirlist = os.listdir(folder)
-        for filename in os.listdir(folder):
+        for filename in folderdirlist:
             file_path = os.path.join(folder, filename)
             try:
                 if os.path.isfile(file_path) or os.path.islink(file_path):
@@ -376,12 +374,13 @@ def resetMediaPOST(done_with_post):
             except Exception as e:
                 print('Failed to delete %s. Reason: %s' % (file_path, e))
         g = ImageGetter()
+        #Loads 10 new images in content folder
         g.retrieve_imgs()
 
         time.sleep(120)
 
         i = {}
-
+        #Will send a post request and send each one of the new photos to the webserver media folder 
         for i in folderdirlist:
             files = {"file" : open("C:/Users/fguin/OneDrive/Desktop/instabot/process/utils/content/{}".format(i),"rb")}
             l = requests.post(mediaserver_url, files=files)
@@ -389,6 +388,7 @@ def resetMediaPOST(done_with_post):
         done_with_post = False
     return done_with_post
 
+#Will Schedule to do each job at a specified time
 schedule.every().day.at("12:30:00").do(postPicture1)
 schedule.every().day.at("13:30:00").do(postPicture2)
 schedule.every().day.at("14:30:00").do(postPicture3)
