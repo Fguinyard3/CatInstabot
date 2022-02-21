@@ -3,13 +3,7 @@ import openai
 import random
 
 
-
-import os
-import openai
-import random
-
-
-
+#TextGen utilizes Open AI GPT-3 to generate a respones when given a prompt
 class TextGen():
   def __init__(self):
     self.prompts = [    
@@ -19,10 +13,10 @@ class TextGen():
       "make a weird sound and verbalize it",
       "make a cute cat noise",
       "give me a fun fact about cats"
-
-      ]
-    self.key = "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"
-
+    ]
+    
+    self.key = "sk-<YOUR OPENAI API KEY>"
+  
   def get_textdata(self):
     openai.api_key = self.key
     response = openai.Completion.create(
